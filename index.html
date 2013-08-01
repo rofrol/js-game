@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="style.css">
+<script src="jquery-1.8.3.js"></script>
+<script>
+    var step = 5;
+    function regMove(direction) {
+        $("#joystick ."+direction).on("click",function(){
+            var top = $("#ship").css("top").substring(0,3);
+            var left = $("#ship").css("left").substring(0,3);
+            if(direction === "top") $("#ship").css("top", (top - step)+"px");
+            else if(direction === "bottom") $("#ship").css("top", (top + step)+"px");
+            else if(direction === "left") $("#ship").css("top", (left - step)+"px");
+            else if(direction === "right") $("#ship").css("left", (left + step)+"px");
+        });
+
+    }
+    $(document).ready(function(){
+        $("#ship").css("background","red");
+        regMove("top");
+        regMove("left");
+        regMove("right");
+        regMove("bottom");
+
+    });
+</script>
+<table id="joystick">
+    <tr>
+        <td></td>
+        <td class="btn top">up</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td class="btn left">left</td>
+        <td></td>
+        <td class="btn right">right</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="btn bottom">down</td>
+        <td></td>
+    </tr>
+</table>
+
+<div id="ship">----</div>
